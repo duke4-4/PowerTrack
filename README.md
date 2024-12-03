@@ -104,8 +104,8 @@ PowerTrack is a modern web application designed to help users manage and monitor
 1. Clone the repository:
 
 ```bash
-git clone https://github.com/yourusername/powertrack.git
-cd powertrack
+git clone https://github.com/duke4-4/PowerTrack.git
+cd PowerTrack
 ```
 
 2. Install dependencies:
@@ -196,16 +196,15 @@ PUT    /api/faults/:id   - Update fault
 1. Uses local JSON server for database (not suitable for production)
 2. No authentication system implemented
 3. Limited payment gateway integration
-4. No real-time updates for notifications
-5. Basic error handling
-6. No offline support
-7. Limited data validation
+4. Basic error handling
+5. No offline support
+6. Limited data validation
 
 ## Contributing
 1. Fork the repository
-2. Create a feature branch (`git checkout -b feature/AmazingFeature`)
-3. Commit changes (`git commit -m 'Add AmazingFeature'`)
-4. Push to branch (`git push origin feature/AmazingFeature`)
+2. Create a feature branch (`git checkout -b feature/ExtraFeature`)
+3. Commit changes (`git commit -m 'Add ExtraFeature'`)
+4. Push to branch (`git push origin feature/ExtraFeature`)
 5. Open a Pull Request
 
 ## License
@@ -214,7 +213,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 ---
 
 ## Contact
-Tashinga Duke Chizengwe - tashingachizengwe@gmail.com.com
+Tashinga Duke Chizengwe - tashingachizengwe@gmail.com
 Project Link: https://github.com/duke4-4/PowerTrack
 
 ## Acknowledgments
