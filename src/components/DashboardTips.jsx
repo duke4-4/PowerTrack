@@ -4,7 +4,9 @@ import {
   IoArrowForward,
   IoWaterOutline,
   IoFlashOutline,
-  IoSunnyOutline
+  IoSunnyOutline,
+  IoWarningOutline,
+  IoCallOutline
 } from 'react-icons/io5';
 
 export default function DashboardTips() {
@@ -62,6 +64,25 @@ export default function DashboardTips() {
             </li>
           ))}
         </ul>
+      </div>
+
+      <div className="mt-4 bg-red-50 p-4 rounded-lg">
+        <h4 className="font-medium text-red-800 mb-2 flex items-center">
+          <IoWarningOutline className="mr-2" />
+          <span>Report Suspicious Activity</span>
+        </h4>
+        <p className="text-red-700 text-sm mb-3">
+          If you notice any tampering with electrical equipment or theft, please report immediately:
+        </p>
+        <div className="flex justify-center">
+          <a 
+            href="tel:+263242780920" 
+            className="inline-flex items-center justify-center px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 transition-colors"
+          >
+            <IoCallOutline className="mr-2" />
+            Call +263 242 780 920
+          </a>
+        </div>
       </div>
     </div>
   );

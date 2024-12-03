@@ -1,5 +1,5 @@
 import { FaBolt } from 'react-icons/fa';
-import { IoFlashOutline, IoNotificationsOutline, IoChatbubbleEllipsesOutline } from 'react-icons/io5';
+import { IoFlashOutline, IoNotificationsOutline, IoChatbubbleEllipsesOutline, IoWarningOutline } from 'react-icons/io5';
 import { useState, useEffect } from 'react';
 
 export default function Hero() {
@@ -61,8 +61,17 @@ export default function Hero() {
   const handleSubmit = (e) => {
     e.preventDefault();
     // Handle form submission logic here
+    console.log('Form submitted:', formData);
     setShowModal(false);
     setShowConfirmation(true);
+  };
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({
+      ...prev,
+      [name]: value
+    }));
   };
 
   return (
@@ -90,10 +99,50 @@ export default function Hero() {
                   <IoNotificationsOutline className="mr-2 text-xl" />
                   Get Notifications
                 </button>
+                <button 
+                  onClick={() => window.location.href = '/fault-report'}
+                  className="bg-red-600 text-white px-6 py-3 rounded-lg font-semibold flex items-center justify-center hover:bg-red-500 transition-colors border border-red-500"
+                >
+                  <IoWarningOutline className="mr-2 text-xl" />
+                  Report Fault
+                </button>
 
                 {showModal && (
                   <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-[2]">
-                    {/* Modal content remains the same */}
+                    <div className="bg-white rounded-lg p-6 w-full max-w-md">
+                      <h3 className="text-xl font-semibold text-gray-900 mb-4">Get Notifications</h3>
+                      <form onSubmit={handleSubmit}>
+                        <div className="space-y-4">
+                          <div>
+                            <label className="block text-sm font-medium text-gray-700">Name</label>
+                            <input
+                              type="text"
+                              name="name"
+                              value={formData.name}
+                              onChange={handleInputChange}
+                              className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                              required
+                            />
+                          </div>
+                          {/* Add other form fields similarly */}
+                        </div>
+                        <div className="mt-6 flex justify-end space-x-3">
+                          <button
+                            type="button"
+                            onClick={() => setShowModal(false)}
+                            className="px-4 py-2 text-gray-700 hover:bg-gray-100 rounded-lg"
+                          >
+                            Cancel
+                          </button>
+                          <button
+                            type="submit"
+                            className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700"
+                          >
+                            Subscribe
+                          </button>
+                        </div>
+                      </form>
+                    </div>
                   </div>
                 )}
 
@@ -189,7 +238,7 @@ export default function Hero() {
           </button>
         )}
       </div>
-      </div>
+      
     </>
   );
 }

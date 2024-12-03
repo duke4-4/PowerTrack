@@ -7,6 +7,7 @@ import {
   IoBusinessOutline,
   IoHelpCircleOutline
 } from 'react-icons/io5';
+import PropTypes from 'prop-types';
 
 function FaultList({ faults }) {
   const getStatusStyle = (status) => {
@@ -89,5 +90,18 @@ function FaultList({ faults }) {
     </div>
   );
 }
+
+FaultList.propTypes = {
+  faults: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.string.isRequired,
+      type: PropTypes.string.isRequired,
+      description: PropTypes.string.isRequired,
+      location: PropTypes.string.isRequired,
+      reportedAt: PropTypes.string.isRequired,
+      status: PropTypes.string.isRequired
+    })
+  ).isRequired
+};
 
 export default FaultList;
