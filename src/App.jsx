@@ -21,7 +21,7 @@ function App() {
           </Routes>
         </main>
         <footer className="mt-auto py-6 text-center text-gray-500 text-sm">
-          © {new Date().getFullYear()} PowerTrack. All rights reserved.
+          © {new Date().getFullYear()} PowerTrack. All rights reserved. Designed and developed by <a href="https://www.linkedin.com/in/tashinga-duke-chizengwe-132a09209/" target="_blank" rel="noopener noreferrer" className="text-blue-500 hover:underline">Duke</a>
         </footer>
       </div>
     </Router>
