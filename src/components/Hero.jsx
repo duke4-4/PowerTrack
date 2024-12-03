@@ -8,6 +8,7 @@ export default function Hero() {
   const [showChat, setShowChat] = useState(false);
   const [currentSuburbIndex, setCurrentSuburbIndex] = useState(0);
   const [isTransitioning, setIsTransitioning] = useState(false);
+  const [weather, setWeather] = useState(null);
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -59,6 +60,24 @@ export default function Hero() {
     return () => clearInterval(timer);
   }, []);
 
+  useEffect(() => {
+    // Get user's location and weather
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(async (position) => {
+        try {
+          const { latitude, longitude } = position.coords;
+          const response = await fetch(
+            `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=YOUR_API_KEY`
+          );
+          const data = await response.json();
+          setWeather(data.weather[0].main.toLowerCase());
+        } catch (error) {
+          console.error('Error fetching weather:', error);
+        }
+      });
+    }
+  }, []);
+
   const handleSubmit = (e) => {
     e.preventDefault();
     // Handle form submission logic here
@@ -77,8 +96,80 @@ export default function Hero() {
 
   return (
     <>
-      <div className="bg-gradient-to-r from-blue-600 to-blue-800 text-white py-12 mb-8 rounded-lg">
-        <div className="container mx-auto px-6">
+      <div className="bg-gradient-to-r from-blue-600 to-blue-800 text-white py-12 mb-8 rounded-lg relative overflow-hidden">
+        {weather === 'clear' && (
+          <>
+            <div className="absolute top-4 right-4 w-24 h-24 bg-yellow-300 rounded-full animate-pulse z-10" />
+            {[...Array(12)].map((_, i) => (
+              <div
+                key={i}
+                className="absolute w-2 h-16 bg-yellow-300 origin-bottom"
+                style={{
+                  top: '2rem',
+                  right: '5rem',
+                  transform: `rotate(${i * 30}deg)`,
+                  animation: 'rays 2s linear infinite',
+                  opacity: 0.6
+                }}
+              />
+            ))}
+          </>
+        )}
+
+        {weather === 'rain' && (
+          <div className="absolute inset-0 pointer-events-none">
+            {[...Array(100)].map((_, i) => (
+              <div
+                key={i}
+                className="absolute w-0.5 h-6 bg-blue-200"
+                style={{
+                  left: `${Math.random() * 100}%`,
+                  top: `-${Math.random() * 20}%`,
+                  animation: `rainfall ${0.5 + Math.random() * 0.5}s linear infinite`
+                }}
+              />
+            ))}
+          </div>
+        )}
+
+        {weather === 'clouds' && (
+          <div className="absolute inset-0 pointer-events-none">
+            {[...Array(5)].map((_, i) => (
+              <div
+                key={i}
+                className="absolute bg-white/30 rounded-full"
+                style={{
+                  width: `${80 + Math.random() * 40}px`,
+                  height: `${40 + Math.random() * 20}px`,
+                  left: `${Math.random() * 100}%`,
+                  top: `${Math.random() * 30}%`,
+                  animation: `float ${20 + Math.random() * 10}s linear infinite`
+                }}
+              />
+            ))}
+          </div>
+        )}
+
+        <style jsx>{`
+          @keyframes rays {
+            0% { opacity: 0.3; }
+            50% { opacity: 0.8; }
+            100% { opacity: 0.3; }
+          }
+          
+          @keyframes rainfall {
+            0% { transform: translateY(-10px); }
+            100% { transform: translateY(100vh); }
+          }
+          
+          @keyframes float {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+          }
+        `}</style>
+
+        <div className="container mx-auto px-6 relative z-20">
+          {/* Rest of the Hero component content remains the same */}
           <div className="flex flex-col md:flex-row items-center justify-between">
             <div className="md:w-1/2 mb-8 md:mb-0">
               <h1 className="text-4xl md:text-5xl font-bold mb-4 flex items-center">
@@ -206,7 +297,7 @@ export default function Hero() {
         {showChat ? (
           <div 
             className="bg-white rounded-lg shadow-xl w-80"
-            onClick={(e) => e.stopPropagation()} // Prevent clicks inside chat from closing
+            onClick={(e) => e.stopPropagation()} 
           >
             <div className="bg-blue-600 text-white p-4 rounded-t-lg flex justify-between items-center">
               <h3 className="font-semibold">Live Support</h3>
@@ -229,16 +320,14 @@ export default function Hero() {
           </div>
         ) : (
           <button 
-            onClick={(e) => {
-              e.stopPropagation();
-              setShowChat(true);
-            }}
+            onClick={() => setShowChat(true)}
             className="bg-blue-600 text-white p-4 rounded-full shadow-lg hover:bg-blue-700 transition-colors"
           >
             <IoChatbubbleEllipsesOutline className="text-2xl" />
           </button>
         )}
       </div>
+      
       
     </>
   );
