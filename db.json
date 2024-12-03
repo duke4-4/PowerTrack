@@ -1,0 +1,53 @@
+{
+  "users": [
+    {
+      "id": "1",
+      "name": "John Doe",
+      "email": "john@example.com",
+      "address": "123 Main St",
+      "phoneNumber": "555-0123"
+    }
+  ],
+  "notifications": [
+    {
+      "id": "1",
+      "title": "Scheduled Maintenance",
+      "description": "Power outage scheduled for maintenance",
+      "area": "Downtown",
+      "startTime": "2024-03-20T08:00:00",
+      "endTime": "2024-03-20T12:00:00",
+      "severity": "moderate"
+    }
+  ],
+  "tips": [
+    {
+      "id": "1",
+      "title": "Energy Saving Tip",
+      "description": "Switch to LED bulbs to reduce power consumption",
+      "category": "lighting",
+      "datePosted": "2024-03-15T10:00:00"
+    }
+  ],
+  "payments": [
+    {
+      "id": "1",
+      "userId": "1",
+      "amount": 150.50,
+      "billDate": "2024-03-01",
+      "paymentDate": "2024-03-10",
+      "status": "completed",
+      "transactionId": "PAY123456"
+    }
+  ],
+  "faults": [
+    {
+      "id": "1",
+      "userId": "1",
+      "type": "power_outage",
+      "description": "Complete power loss in building",
+      "location": "456 Oak Avenue",
+      "reportedAt": "2024-03-15T15:30:00",
+      "status": "pending"
+    }
+  ]
+} 
