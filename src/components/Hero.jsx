@@ -1,5 +1,5 @@
 import { FaBolt } from 'react-icons/fa';
-import { IoFlashOutline, IoNotificationsOutline, IoChatbubbleEllipsesOutline, IoWarningOutline } from 'react-icons/io5';
+import { IoFlashOutline, IoNotificationsOutline, IoChatbubbleEllipsesOutline, IoWarningOutline, IoCheckmarkCircleOutline } from 'react-icons/io5';
 import { useState, useEffect } from 'react';
 
 export default function Hero() {
@@ -150,23 +150,25 @@ export default function Hero() {
           </div>
         )}
 
-        <style jsx>{`
-          @keyframes rays {
-            0% { opacity: 0.3; }
-            50% { opacity: 0.8; }
-            100% { opacity: 0.3; }
-          }
-          
-          @keyframes rainfall {
-            0% { transform: translateY(-10px); }
-            100% { transform: translateY(100vh); }
-          }
-          
-          @keyframes float {
-            0% { transform: translateX(-100%); }
-            100% { transform: translateX(100%); }
-          }
-        `}</style>
+        <style>
+          {`
+            @keyframes rays {
+              0% { opacity: 0.3; }
+              50% { opacity: 0.8; }
+              100% { opacity: 0.3; }
+            }
+            
+            @keyframes rainfall {
+              0% { transform: translateY(-10px); }
+              100% { transform: translateY(100vh); }
+            }
+            
+            @keyframes float {
+              0% { transform: translateX(-100%); }
+              100% { transform: translateX(100%); }
+            }
+          `}
+        </style>
 
         <div className="container mx-auto px-6 relative z-20">
           {/* Rest of the Hero component content remains the same */}
@@ -200,35 +202,39 @@ export default function Hero() {
                 </button>
 
                 {showModal && (
-                  <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-[2]">
-                    <div className="bg-white rounded-lg p-6 w-full max-w-md">
-                      <h3 className="text-xl font-semibold text-gray-900 mb-4">Get Notifications</h3>
-                      <form onSubmit={handleSubmit}>
-                        <div className="space-y-4">
-                          <div>
-                            <label className="block text-sm font-medium text-gray-700">Name</label>
+                  <div className="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center p-4 z-[2]">
+                    <div className="bg-white/95 backdrop-blur rounded-xl p-8 w-full max-w-md shadow-2xl transform transition-all duration-300 ease-out">
+                      <h3 className="text-2xl font-bold text-gray-900 mb-6 flex items-center">
+                        <IoNotificationsOutline className="mr-3 text-blue-600" />
+                        Get Notifications
+                      </h3>
+                      <form onSubmit={handleSubmit} className="space-y-6">
+                        <div>
+                          <label className="block text-sm font-medium text-gray-700 mb-2">Full Name</label>
+                          <div className="relative">
                             <input
                               type="text"
                               name="name"
                               value={formData.name}
                               onChange={handleInputChange}
-                              className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                              className="block w-full px-4 text-black py-3 rounded-lg border border-gray-200 focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 bg-gray-50/50 backdrop-blur-sm"
                               required
+                              placeholder="Enter your name"
                             />
                           </div>
-                          {/* Add other form fields similarly */}
                         </div>
-                        <div className="mt-6 flex justify-end space-x-3">
+                        {/* Add other form fields similarly */}
+                        <div className="flex justify-end space-x-3 pt-4">
                           <button
                             type="button"
                             onClick={() => setShowModal(false)}
-                            className="px-4 py-2 text-gray-700 hover:bg-gray-100 rounded-lg"
+                            className="px-6 py-2.5 text-gray-700 hover:text-gray-900 hover:bg-gray-100 rounded-lg font-medium transition-colors duration-200"
                           >
                             Cancel
                           </button>
                           <button
                             type="submit"
-                            className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700"
+                            className="px-6 py-2.5 bg-blue-600 text-white rounded-lg font-medium hover:bg-blue-700 transform hover:translate-y-[-1px] transition-all duration-200 focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
                           >
                             Subscribe
                           </button>
@@ -240,7 +246,23 @@ export default function Hero() {
 
                 {showConfirmation && (
                   <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-[2]">
-                    {/* Confirmation content remains the same */}
+                    <div className="bg-white/95 backdrop-blur rounded-xl p-6 w-full max-w-md shadow-2xl transform transition-all duration-300 ease-out">
+                      <div className="text-center">
+                        <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                          <IoCheckmarkCircleOutline className="text-green-500 text-4xl" />
+                        </div>
+                        <h3 className="text-xl font-semibold text-gray-900 mb-2">Successfully Subscribed!</h3>
+                        <p className="text-gray-600 mb-6">
+                          Thank you for subscribing. You will receive notifications about power outages and updates for {formData.location || 'your area'}.
+                        </p>
+                        <button
+                          onClick={() => setShowConfirmation(false)}
+                          className="px-6 py-2.5 bg-blue-600 text-white rounded-lg font-medium hover:bg-blue-700 transition-all duration-200"
+                        >
+                          Close
+                        </button>
+                      </div>
+                    </div>
                   </div>
                 )}
               </div>
