@@ -1,7 +1,13 @@
+import { 
+  FaPhone, 
+  FaWhatsapp, 
+  FaTwitter, 
+  FaInstagram 
+} from 'react-icons/fa';
+import { IoCallOutline } from 'react-icons/io5';
 import LoadSheddingSchedule from '../components/LoadSheddingSchedule';
 import DashboardTips from '../components/DashboardTips';
 import Hero from '../components/Hero';
-import { FaPhone, FaWhatsapp, FaTwitter, FaInstagram } from 'react-icons/fa';
 
 export default function Home() {
   return (
@@ -113,34 +119,49 @@ export default function Home() {
 
         {/* Contact Section */}
         <div className="mt-16 bg-white rounded-2xl shadow-lg p-8">
-          <h2 className="text-3xl font-bold text-gray-800 mb-8">Contact Us</h2>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-            <a href="tel:+263242123456" className="flex flex-col items-center group">
-              <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center group-hover:bg-blue-200 transition-colors">
-                <FaPhone className="text-2xl text-blue-600" />
+          <h2 className="text-3xl font-bold text-gray-800 mb-8 flex items-center">
+            <IoCallOutline className="mr-3 text-blue-600" />
+            Get in Touch
+          </h2>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            <a href="tel:+263242123456" className="flex items-center p-4 rounded-xl hover:bg-blue-50 transition-all group">
+              <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mr-4 group-hover:scale-110 transition-transform">
+                <FaPhone className="text-xl text-blue-600" />
               </div>
-              <span className="mt-2 text-gray-600">+263 242 123456</span>
+              <div>
+                <p className="font-medium text-gray-900">Call Us</p>
+                <span className="text-sm text-gray-600">+263 242 123456</span>
+              </div>
             </a>
             
-            <a href="https://wa.me/263777123456" className="flex flex-col items-center group">
-              <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center group-hover:bg-green-200 transition-colors">
-                <FaWhatsapp className="text-2xl text-green-600" />
+            <a href="https://wa.me/263777123456" className="flex items-center p-4 rounded-xl hover:bg-green-50 transition-all group">
+              <div className="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center mr-4 group-hover:scale-110 transition-transform">
+                <FaWhatsapp className="text-xl text-green-600" />
               </div>
-              <span className="mt-2 text-gray-600">WhatsApp Us</span>
+              <div>
+                <p className="font-medium text-gray-900">WhatsApp</p>
+                <span className="text-sm text-gray-600">Chat with us</span>
+              </div>
             </a>
             
-            <a href="https://twitter.com/powertrack" className="flex flex-col items-center group">
-              <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center group-hover:bg-blue-200 transition-colors">
-                <FaTwitter className="text-2xl text-blue-400" />
+            <a href="https://twitter.com/powertrack" className="flex items-center p-4 rounded-xl hover:bg-blue-50 transition-all group">
+              <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mr-4 group-hover:scale-110 transition-transform">
+                <FaTwitter className="text-xl text-blue-400" />
               </div>
-              <span className="mt-2 text-gray-600">@powertrack</span>
+              <div>
+                <p className="font-medium text-gray-900">Twitter</p>
+                <span className="text-sm text-gray-600">@powertrack</span>
+              </div>
             </a>
             
-            <a href="https://instagram.com/powertrack" className="flex flex-col items-center group">
-              <div className="w-16 h-16 bg-pink-100 rounded-full flex items-center justify-center group-hover:bg-pink-200 transition-colors">
-                <FaInstagram className="text-2xl text-pink-600" />
+            <a href="https://instagram.com/powertrack" className="flex items-center p-4 rounded-xl hover:bg-pink-50 transition-all group">
+              <div className="w-12 h-12 bg-pink-100 rounded-full flex items-center justify-center mr-4 group-hover:scale-110 transition-transform">
+                <FaInstagram className="text-xl text-pink-600" />
               </div>
-              <span className="mt-2 text-gray-600">@powertrack</span>
+              <div>
+                <p className="font-medium text-gray-900">Instagram</p>
+                <span className="text-sm text-gray-600">@powertrack</span>
+              </div>
             </a>
           </div>
         </div>

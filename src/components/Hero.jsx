@@ -26,6 +26,7 @@ export default function Hero() {
     { name: 'Glen-Norah', status: 'Stage 2', nextOutage: 'Today, 10:00 - 12:30' }
   ];
 
+  // eslint-disable-next-line no-unused-vars
   const advertisements = [
     {
       company: "Solar Solutions Ltd",
