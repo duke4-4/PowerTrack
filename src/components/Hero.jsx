@@ -27,7 +27,6 @@ export default function Hero() {
     { name: 'Glen-Norah', status: 'Stage 2', nextOutage: 'Today, 10:00 - 12:30' }
   ];
 
-  // eslint-disable-next-line no-unused-vars
   const advertisements = [
     {
       company: "Solar Solutions Ltd",
@@ -61,7 +60,6 @@ export default function Hero() {
   }, []);
 
   useEffect(() => {
-    // Get user's location and weather
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(async (position) => {
         try {
@@ -80,7 +78,6 @@ export default function Hero() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Handle form submission logic here
     console.log('Form submitted:', formData);
     setShowModal(false);
     setShowConfirmation(true);
@@ -171,7 +168,6 @@ export default function Hero() {
         </style>
 
         <div className="container mx-auto px-6 relative z-20">
-          {/* Rest of the Hero component content remains the same */}
           <div className="flex flex-col md:flex-row items-center justify-between">
             <div className="md:w-1/2 mb-8 md:mb-0">
               <h1 className="text-4xl md:text-5xl font-bold mb-4 flex items-center">
@@ -223,7 +219,6 @@ export default function Hero() {
                             />
                           </div>
                         </div>
-                        {/* Add other form fields similarly */}
                         <div className="flex justify-end space-x-3 pt-4">
                           <button
                             type="button"
@@ -313,8 +308,6 @@ export default function Hero() {
         </div>
       </div>
 
-      
-      {/* Chat Widget */}
       <div className="fixed bottom-6 right-6 z-10">
         {showChat ? (
           <div 
@@ -349,8 +342,6 @@ export default function Hero() {
           </button>
         )}
       </div>
-      
-      
     </>
   );
 }
