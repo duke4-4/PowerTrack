@@ -154,7 +154,10 @@ export default function Hero() {
       {/* Chat Widget */}
       <div className="fixed bottom-6 right-6 z-10">
         {showChat ? (
-          <div className="bg-white rounded-lg shadow-xl w-80">
+          <div 
+            className="bg-white rounded-lg shadow-xl w-80"
+            onClick={(e) => e.stopPropagation()} // Prevent clicks inside chat from closing
+          >
             <div className="bg-blue-600 text-white p-4 rounded-t-lg flex justify-between items-center">
               <h3 className="font-semibold">Live Support</h3>
               <button onClick={() => setShowChat(false)} className="text-white hover:text-gray-200">
@@ -176,12 +179,16 @@ export default function Hero() {
           </div>
         ) : (
           <button 
-            onClick={() => setShowChat(true)}
+            onClick={(e) => {
+              e.stopPropagation();
+              setShowChat(true);
+            }}
             className="bg-blue-600 text-white p-4 rounded-full shadow-lg hover:bg-blue-700 transition-colors"
           >
             <IoChatbubbleEllipsesOutline className="text-2xl" />
           </button>
         )}
+      </div>
       </div>
     </>
   );
